@@ -1,0 +1,26 @@
+// Custom Theming for Angular Material
+@use '@angular/material' as mat;
+
+// Include the common styles for Angular Material.
+@include mat.core();
+
+// Define the primary and accent palettes using shades of blue
+$technical-test-primary: mat.define-palette(mat.$blue-palette, 500); // Primary color with a mid-blue
+$technical-test-accent: mat.define-palette(mat.$cyan-palette, A200, A100, A400); // Accent with lighter cyan
+
+// Optional: You can define the warn palette (defaults to red).
+$technical-test-warn: mat.define-palette(mat.$red-palette);
+
+// Define your custom theme using the updated palettes.
+$technical-test-theme: mat.define-light-theme((
+  color: (
+    primary: $technical-test-primary,
+    accent: $technical-test-accent,
+    warn: $technical-test-warn,
+  ),
+  typography: mat.define-typography-config(),
+  density: 0 // Adjust density if neededd
+));
+
+// Apply the theme to all components in the application.
+@include mat.all-component-themes($technical-test-theme);
